@@ -3,10 +3,17 @@ on: push
 jobs:
   print:
     runs-on: ubuntu-latest
+    env:
+      ACTOR: ${{ github.actor }}
+      RUN_ID: ${{ github.run_id }}"
+      HEAD_REF: ${{ github.head_ref }}"
+      WORKSPACE: ${{ github.workspace }}"
+      REPOSITORY: ${{ github.repository }}"
+      REPOSITORY_OWNER: ${{ github.repository_owner }}"
     steps:
-      - run: echo "github.actor ${{ github.actor }}"
-      - run: echo "github.run_id ${{ github.run_id }}"
-      - run: echo "github.head_ref ${{ github.head_ref }}"
-      - run: echo "github.workspace ${{ github.workspace }}"
-      - run: echo "github.repository ${{ github.repository }}"
-      - run: echo "github.repository_owner ${{ github.repository_owner }}"
+      - run: echo "github.actor ${ACTOR}"
+      - run: echo "github.run_id ${RUN_ID}"
+      - run: echo "github.head_ref ${HEAD_REF}"
+      - run: echo "github.workspace ${WORKSPACE}"
+      - run: echo "github.repository ${REPOSITORY}"
+      - run: echo "github.repository_owner ${REPOSITORY_OWNER}"
